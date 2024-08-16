@@ -1,9 +1,12 @@
 using System.ComponentModel;
+using Microsoft.Extensions.Logging;
 
 namespace CalculatorApp;
 
 public class Calculator
 {
+    private static readonly ILogger _logger = LoggerProvider.CreateLogger<Program>();
+
     public double PerformOperation(double num1, double num2, string operation)
     {
         double result;
@@ -23,7 +26,8 @@ public class Calculator
                 result = divide(num1, num2);
                 break;
             default:
-                throw new InvalidOperationException("An error occurred: The specified operation is not supported.");
+                _logger.LogError($"Unsopported Operation: {operation}");
+                throw new InvalidOperationException("Operation is not supported.");
         }
 
         return result;
@@ -49,6 +53,7 @@ public class Calculator
     {
         if (num2 == 0)
         {
+            _logger.LogError("Attempted to divide by zero.");
             throw new DivideByZeroException("Cannot divide by zero.");
         }
         return num1 / num2;

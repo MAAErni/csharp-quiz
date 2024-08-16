@@ -16,63 +16,90 @@ public class CalculatorTest
     [Test]
     public void Add_Sum()
     {
-        double result = _calculator.add(1, 2);
-        Assert.AreEqual(3, result);
+        double num1 = 1;
+        double num2 = 2;
+        double expectedResult = 3;
+        double result = _calculator.add(num1, num2);
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     [Test]
     public void Subtract_Difference()
     {
-        double result = _calculator.subtract(10, 7);
-        Assert.AreEqual(3, result);
+        double num1 = 10;
+        double num2 = 7;
+        double expectedResult = 3;
+        double result = _calculator.subtract(num1, num2);
+        Assert.That(result, Is.EqualTo(expectedResult));
+
     }
 
     [Test]
     public void Multiply_Product()
     {
-        double result = _calculator.multiply(5, 5);
-        Assert.AreEqual(25, result);
+        double num1 = 5;
+        double num2 = 5;
+        double expectedResult = 25;
+        double result = _calculator.multiply(num1, num2);
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     [Test]
     public void Divide_Quotient()
     {
-        double result = _calculator.divide(6, 2);
-        Assert.AreEqual(3, result);
+        double num1 = 6;
+        double num2 = 2;
+        double expectedResult = 3;
+        double result = _calculator.divide(num1, num2);
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     [Test]
     public void Add_NegativeNumbers()
     {
-        double result = _calculator.add(-1, -2);
-        Assert.AreEqual(-3, result);
+        double num1 = -1;
+        double num2 = -2;
+        double expectedResult = -3;
+        double result = _calculator.add(num1, num2);
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     [Test]
     public void Subtract_NegativeResult()
     {
-        double result = _calculator.subtract(5, 10);
-        Assert.AreEqual(-5, result);
+        double num1 = 5;
+        double num2 = 10;
+        double expectedResult = -5;
+        double result = _calculator.subtract(num1, num2);
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     [Test]
     public void Multiply_WithZero()
     {
-        double result = _calculator.multiply(2, 0);
-        Assert.AreEqual(0, result);
+        double num1 = 2;
+        double num2 = 0;
+        double expectedResult = 0;
+        double result = _calculator.multiply(num1, num2);
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     [Test]
     public void Divide_FractionResult()
     {
-        double result = _calculator.divide(7, 2);
-        Assert.AreEqual(3.5, result);
+        double num1 = 7;
+        double num2 = 2;
+        double expectedResult = 3.5;
+        double result = _calculator.divide(num1, num2);
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     [Test]
     public void Divide_ZeroDivider()
     {
-        Assert.Throws<DivideByZeroException>(() => _calculator.divide(6, 0));
+        double num1 = 6;
+        double num2 = 0;
+        Assert.Throws<DivideByZeroException>(() => _calculator.divide(num1, num2));
     }
 
     [Test]

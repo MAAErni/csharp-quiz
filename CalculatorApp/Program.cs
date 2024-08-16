@@ -1,11 +1,17 @@
-﻿namespace CalculatorApp;
+﻿using System;
+using Microsoft.Extensions.Logging;
+
+namespace CalculatorApp;
 
 class Program
 {
+    private static readonly ILogger _logger = LoggerProvider.CreateLogger<Program>();
     static void Main(string[] args)
     {
         try
         {
+            _logger.LogInformation("Calculator Started");
+
             Console.WriteLine("Enter the first number:");
             double num1 = Convert.ToDouble(Console.ReadLine());
 
@@ -21,19 +27,19 @@ class Program
         }
         catch (FormatException)
         {
-            Console.WriteLine("Invalid input. Please enter numeric values.");
+            _logger.LogError("Invalid input. Please enter numeric values.");
         }
         catch (DivideByZeroException ex)
         {
-            Console.WriteLine(ex.Message);
+            _logger.LogError(ex.Message);
         }
         catch (InvalidOperationException ex)
         {
-            Console.WriteLine(ex.Message);
+            _logger.LogError(ex.Message);
         }
         finally
         {
-            Console.WriteLine("Calculation attempt finished.");
+            _logger.LogInformation("Calculation attempt finished.");
         }
     }
 }
